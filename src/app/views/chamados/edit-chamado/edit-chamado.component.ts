@@ -74,6 +74,12 @@ export class EditChamadoComponent implements OnInit {
     const id: string | null = this.route.snapshot.paramMap.get('id');
     if (id != null) {
       this.chamadoService.findById(id).subscribe(chamado => {
+        if(!chamado.funcionario){
+          chamado.funcionario = this.funcionarioEmpty
+        }
+        if(!chamado.cliente){
+          chamado.cliente = this.clienteEmpty;
+        }
         this.chamado = chamado;
       });
     }
