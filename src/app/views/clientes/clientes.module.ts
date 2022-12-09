@@ -9,12 +9,15 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { FuturoclienteComponent } from './futurocliente/futurocliente.component';
+
 
 @NgModule({
   declarations: [
     ClientesComponent,
     NewClienteComponent,
-    EditClienteComponent
+    EditClienteComponent,
+    FuturoclienteComponent
   ],
   imports: [
     CommonModule,
