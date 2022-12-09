@@ -25,4 +25,20 @@ export class FuturoCandidatoComponent implements OnInit {
     })
   }
 
+  public delete(id: number): void {
+    let ok = confirm("Tem certeza que deseja excluir?");
+    if(ok) {
+      this.futurocandidatoservice.delete(id).subscribe(() => {
+        alert("Futuro Candidato excluido.");
+        this.initializeTable();
+      });
+    }
+  }
 }
+
+
+  
+
+ 
+
+

@@ -21,4 +21,16 @@ export class FuturoCandidatoService {
       })
       );
     }
-}
+    
+  public delete(id: number): Observable<FuturoCandidato> {
+    return this.http.delete<FuturoCandidato>(`${API_CONFIG.baseUrl}/candidatos/${id}`).pipe(
+      catchError(error => {
+        alert("Não foi possível deletar o futuro candidato");
+        console.error(error);
+        return EMPTY;
+      })
+    );
+   
+  }  
+  
+    }
