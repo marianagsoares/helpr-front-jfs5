@@ -8,13 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NewFuncionarioComponent } from './views/funcionarios/new-funcionario/new-funcionario.component';
-import { FotoFuncionarioPipe } from './pipe/foto-funcionario.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewFuncionarioComponent,
-    FotoFuncionarioPipe
+    NewFuncionarioComponent
   ],
   imports: [
     BrowserModule,

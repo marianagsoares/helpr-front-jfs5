@@ -10,7 +10,7 @@ import { FotoFuncionarioPipe } from 'src/app/pipe/foto-funcionario.pipe';
 
 @NgModule({
   declarations: [
-    FuncionariosComponent,
+  FuncionariosComponent,
   FotoFuncionarioPipe
 
   ],
