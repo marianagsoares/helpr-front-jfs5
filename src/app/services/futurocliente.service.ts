@@ -47,17 +47,8 @@ export class FuturoclienteService {
   public delete(id: number): Observable<FuturoCliente> {
     return this.http.delete<FuturoCliente>(`${API_CONFIG.baseUrl}/clientes/futuros/${id}`).pipe(
       catchError(error => {
-        alert("Não foi possível deletar");
+        alert("Não foi possível deletar futuro cliente");
         console.error(error);
-        return EMPTY;
-      })
-    );
-  }
-
-  public update(futuroCliente: FuturoCliente): Observable<FuturoCliente> {
-    return this.http.put<FuturoCliente>(`${API_CONFIG.baseUrl}/clientes/futuros${futuroCliente.idFuturoCliente}`, futuroCliente).pipe(
-      catchError(error => {
-        alert("Erro ao editar cliente.");
         return EMPTY;
       })
     );
