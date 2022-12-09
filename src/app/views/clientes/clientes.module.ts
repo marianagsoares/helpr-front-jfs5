@@ -9,6 +9,8 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { FuturoclienteComponent } from './futurocliente/futurocliente.component';
+import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.component';
+
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { FuturoclienteComponent } from './futurocliente/futurocliente.component'
     ClientesComponent,
     NewClienteComponent,
     EditClienteComponent,
-    FuturoclienteComponent
+    FuturoclienteComponent,
+    FuturoCandidatoComponent
   ],
   imports: [
     CommonModule,
