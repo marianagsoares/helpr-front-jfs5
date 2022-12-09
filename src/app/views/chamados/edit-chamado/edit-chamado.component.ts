@@ -1,10 +1,11 @@
 import { NgForm } from '@angular/forms';
 import { ClienteService } from './../../../services/cliente.service';
 import { ChamadoService } from './../../../services/chamado.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Chamado } from './../../../models/chamado';
 import { Cliente } from './../../../models/cliente';
 import { Component, OnInit } from '@angular/core';
+import { FuncionarioService } from 'src/app/services/funcionario.service';
 
 @Component({
   selector: 'app-edit-chamado',
@@ -46,7 +47,9 @@ export class EditChamadoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private chamadoService: ChamadoService,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private funcionarioService: FuncionarioService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -62,24 +65,21 @@ export class EditChamadoComponent implements OnInit {
   }
 
   private initializeFuncionarios(): void {
-    this.funcionarios.push({
-      id: 1,
-      nome: "Renato Pereira"
-    },
-    {
-      id: 2,
-      nome: "Victor Icoma"
-    });
+    this.funcionarioService.findAll().subscribe(funcionarios => {
+      this.funcionarios = funcionarios;
+    })
   }
 
   private initializeChamado(): void {
     const id: string | null = this.route.snapshot.paramMap.get('id');
     if (id != null) {
       this.chamadoService.findById(id).subscribe(chamado => {
-        if (!chamado.funcionario)
-          chamado.funcionario = this.funcionarioEmpty;
-        if (!chamado.cliente)
+        if(!chamado.funcionario){
+          chamado.funcionario = this.funcionarioEmpty
+        }
+        if(!chamado.cliente){
           chamado.cliente = this.clienteEmpty;
+        }
         this.chamado = chamado;
       });
     }
@@ -87,8 +87,10 @@ export class EditChamadoComponent implements OnInit {
 
   public update(form: NgForm): void {
     if (form.valid) {
+      console.log(this.chamado)
       this.chamadoService.update(this.chamado).subscribe(chamado => {
         alert("Chamado editado.");
+        this.router.navigate(["/chamados"])
       });
     }
     else {

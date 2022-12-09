@@ -1,9 +1,10 @@
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FuturoclienteComponent } from './futurocliente/futurocliente.component';
+import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'futuros',
     component: FuturoclienteComponent
+  },
+  {
+    path:'candidatos',
+    component: FuturoCandidatoComponent   // Futuro-Candidato
   }
 ];
 
