@@ -5,7 +5,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 const routes: Routes = [
   {
     path: '',
-    component: FuncionariosComponent
+    component: FuncionariosComponent,
+    title: "Helpr | Funcionários"
   }
 ];
 
