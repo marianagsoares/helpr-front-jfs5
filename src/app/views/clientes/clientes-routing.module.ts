@@ -9,23 +9,28 @@ import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.co
 const routes: Routes = [
   {
     path: '',
-    component: ClientesComponent
+    component: ClientesComponent,
+    title: "Helpr | Clientes"
   },
   {
     path: 'new',
-    component: NewClienteComponent
+    component: NewClienteComponent,
+    title: "Helpr | Adicionar Cliente"
   },
   {
     path: 'edit/:id',
-    component: EditClienteComponent
+    component: EditClienteComponent,
+    title: "Helpr | Editar Cliente"
   },
   {
     path: 'futuros',
-    component: FuturoclienteComponent
+    component: FuturoclienteComponent,
+    title: "Helpr | Futuros Clientes"
   },
   {
     path:'candidatos',
-    component: FuturoCandidatoComponent   // Futuro-Candidato
+    component: FuturoCandidatoComponent,
+    title: "Helpr | Futuros Candidatos"
   }
 ];
 
