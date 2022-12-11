@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CargoComponent } from './cargo/cargo.component';
+import { NewCargoComponent } from './new-cargo/new-cargo.component';
 
 const routes: Routes = [
   {
     path: '', 
-    component: CargoComponent,
+    component: CargoComponent,  // chama a rora cargo
     title: "Helpr | Cargos"
+   },
+   {
+    path:'new',
+    component: NewCargoComponent  // chama a rota novo cargo
    }
 ];
 
