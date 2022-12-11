@@ -35,7 +35,7 @@ export class FuturoclienteService {
   }
 
   public create(futuroCliente: FuturoCliente): Observable<FuturoCliente> {
-    return this.http.post<FuturoCliente>(`${API_CONFIG.baseUrl}/clientes/futuros`, futuroCliente).pipe(
+    return this.http.post<FuturoCliente>(`${API_CONFIG.baseUrl}/clientes/futuros/criar`, futuroCliente).pipe(
       catchError(error => {
         alert("Não foi possível criar futuro cliente");
         console.error(error);

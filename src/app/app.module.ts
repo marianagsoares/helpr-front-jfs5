@@ -7,15 +7,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
-import { FuturoCandidatoComponent } from './views/clientes/futuro-candidato/futuro-candidato.component';
-import { NewFuncionarioComponent } from './views/funcionarios/new-funcionario/new-funcionario.component';
+import { NgxMaskModule} from 'ngx-mask';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NewFuncionarioComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -6,12 +6,14 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FotoFuncionarioPipe } from 'src/app/pipe/foto-funcionario.pipe';
+import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
 
 
 @NgModule({
   declarations: [
   FuncionariosComponent,
-  FotoFuncionarioPipe
+  FotoFuncionarioPipe,
+  NewFuncionarioComponent
 
   ],
   imports: [
