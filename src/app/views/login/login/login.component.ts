@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NewFuturoClienteComponent } from '../../clientes/futurocliente/new-futuro-cliente/new-futuro-cliente.component';
+import { NgwWowService } from 'ngx-wow';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,10 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     public dialog: MatDialog,
+    private wowService: NgwWowService
   ) {
+
+    this.wowService.init();
 
     this.formLogin = formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
