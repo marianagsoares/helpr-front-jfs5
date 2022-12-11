@@ -5,8 +5,10 @@
     background: linear-gradient(45deg, rgba(173,139,194,1) 0%, rgba(250,141,235,1) 100%);
 
     display: flex;
+    gap: 50px;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .login-container form {
@@ -19,4 +21,22 @@
 .login-container form h1 {
     text-align: center;
     font-size: 30px;
+}
+
+.beourclient-btn {
+    white-space: normal;
+    word-wrap: break-word;
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    background-color: rgba(134, 50, 187, 0.8);
+    border-radius: 150px;
+    width: 150px;
+    height: 150px;
+    font-size: 16px;
+    color: white;
+}
+
+.beourclient-btn:hover{
+    background-color: rgba(134, 50, 187, 1);
 }

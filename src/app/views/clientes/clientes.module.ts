@@ -11,7 +11,7 @@ import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { FuturoclienteComponent } from './futurocliente/futurocliente.component';
 import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.component';
-
+import { NewFuturoClienteComponent } from './futurocliente/new-futuro-cliente/new-futuro-cliente.component';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.co
     NewClienteComponent,
     EditClienteComponent,
     FuturoclienteComponent,
-    FuturoCandidatoComponent
+    FuturoCandidatoComponent,
+    NewFuturoClienteComponent
   ],
   imports: [
     CommonModule,

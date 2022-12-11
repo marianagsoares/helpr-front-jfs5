@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Preencha os campos abaixo</h2>
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="dadosPessoaisForm">
+    <form [formGroup]="dadosPessoaisForm">
+      <ng-template matStepLabel>Dados Pessoais</ng-template>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Digite seu nome" formControlName="nome" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="Digite seu CPF" formControlName="cpf" required mask="000.000.000-00">
+      </mat-form-field>
+      <div div="form-button">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="contatosForm" label="Contatos">
+    <form [formGroup]="contatosForm">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="telefone" placeholder="Digite seu número de telefone"
+               required mask="(00)00000-0000">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Digite seu e-mail"
+               required>
+      </mat-form-field>
+      <div class="form-button">
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button mat-dialog-close (click)="create()">Enviar</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>
