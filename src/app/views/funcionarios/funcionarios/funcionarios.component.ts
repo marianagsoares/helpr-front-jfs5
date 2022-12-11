@@ -30,7 +30,7 @@ export class FuncionariosComponent implements OnInit {
     let ok = confirm("Tem certeza que deseja excluir?");
     if(ok) {
       this.funcionarioService.delete(id).subscribe(() => {
-        alert("Cliente excluido.");
+        alert("Funcionario Excluído com sucesso.");
         this.initializeTable();
       });
     }

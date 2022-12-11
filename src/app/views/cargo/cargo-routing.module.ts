@@ -6,7 +6,7 @@ import { NewCargoComponent } from './new-cargo/new-cargo.component';
 const routes: Routes = [
   {
     path: '', 
-    component: CargoComponent,  // chama a rora cargo
+    component: CargoComponent,  // chama a rota cargo
     title: "Helpr | Cargos"
    },
    {
