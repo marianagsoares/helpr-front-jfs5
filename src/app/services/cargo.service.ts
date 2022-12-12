@@ -11,7 +11,7 @@ export class CargoService {
 
   constructor(private http: HttpClient) { }
 
-  //metodo para buscar 
+  //metodo para buscar cargo
   public findAll(): Observable<Cargo[]>{
   return this.http.get<Cargo[]>(`${API_CONFIG.baseUrl}/cargos`).pipe(
     catchError(error => {
@@ -21,7 +21,7 @@ export class CargoService {
     })
     );
   }
-// metodo para criar um cliente 
+// metodo para criar um cargo
   public create(cargo: Cargo): Observable<Cargo>{
    return this.http.post<Cargo>(`${API_CONFIG.baseUrl}/cargos`, cargo).pipe(  
     catchError(error =>{
@@ -32,7 +32,18 @@ export class CargoService {
     );
   }
 
-  // deletar cliente
+  // buscar pelo id
+  public findById(idCargo: string): Observable<Cargo>{
+    return this.http.get<Cargo>(`${API_CONFIG.baseUrl}/cargos/${idCargo}`).pipe(
+      catchError(error =>{
+        alert("Erro ao buscar dados do cargo");
+        console.error(error);
+        return EMPTY;
+      })
+    )
+  }
+
+  // deletar cargo
   public delete(idCargo: number): Observable<Cargo> {
     return this.http.delete<Cargo>(`${API_CONFIG.baseUrl}/cargos/${idCargo}`).pipe(
       catchError(error => {
@@ -44,4 +55,16 @@ export class CargoService {
     );
   }
 
-}
+  public update(cargo: Cargo): Observable<Cargo> {
+      return this.http.put<Cargo>(`${API_CONFIG.baseUrl}/cargos/${cargo.idCargo}`, cargo).pipe(
+        catchError(error => {
+          alert("Erro ao editar cargo.");
+          console.error(error);
+          return EMPTY;
+        })
+      );
+    }
+
+  }
+
+
