@@ -26,11 +26,12 @@ export class FuncionariosComponent implements OnInit {
     });
   }
 
-  public delete(id: number): void {
+  public delete(idFuncionario: number): void {
+    console.log(idFuncionario)
     let ok = confirm("Tem certeza que deseja excluir?");
     if(ok) {
-      this.funcionarioService.delete(id).subscribe(() => {
-        alert("Funcionario Excluído com sucesso.");
+      this.funcionarioService.delete(idFuncionario).subscribe(() => {
+        alert("Funcionário Excluído com sucesso.");
         this.initializeTable();
       });
     }
