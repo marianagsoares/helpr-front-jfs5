@@ -25,5 +25,14 @@ private initializeTable():void{
     this.dataSource = cargos;
   })
 }
+public delete(idCargo: number): void {
+  let ok = confirm("Tem certeza que deseja excluir?");
+  if(ok) {
+    this.cargosService.delete(idCargo).subscribe(() => {
+      alert("Cargo excluido.");
+      this.initializeTable();
+    });
+  }
+}
 
 }

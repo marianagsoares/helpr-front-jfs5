@@ -3,5 +3,7 @@ export interface Funcionario {
     nome: string;
     email: string;
     cpf: string;
-    perfil: string;
+    telefone: string;
+    perfil?: string;
+    senha?: string;
 }

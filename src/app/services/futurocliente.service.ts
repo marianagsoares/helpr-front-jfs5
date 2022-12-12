@@ -3,7 +3,7 @@ import { EmptyExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
-import { FuturoCliente } from '../models/futurocliente';
+import { FuturoCliente } from '../models/futuro-cliente';
 
 @Injectable({
   providedIn: 'root'

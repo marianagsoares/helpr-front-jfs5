@@ -9,7 +9,9 @@ import { Funcionario } from '../models/funcionario';
 })
 export class FuncionarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    ) { }
 
   public findAll(): Observable<Funcionario[]> {
     return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`).pipe(
@@ -22,7 +24,7 @@ export class FuncionarioService {
   }
 
   public findById(id: string): Observable<Funcionario> {
-    return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios${id}`).pipe(
+    return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
       catchError(error => {
         alert("Funcionário não encontrado");
         console.error(error);
@@ -41,17 +43,8 @@ export class FuncionarioService {
     );
   }
 
-  public update(funcionario: Funcionario): Observable<Funcionario> {
-    return this.http.put<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios${funcionario.idFuncionario}`, funcionario).pipe(
-      catchError(error => {
-        alert("Erro ao editar funcionário");
-        return EMPTY;
-      })
-    );
-  }
-
   public delete(id: number): Observable<Funcionario> {
-    return this.http.delete<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios${id}`).pipe(
+    return this.http.delete<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
       catchError(error => {
         alert("Não foi possível deletar o funcionário");
         console.error(error);
