@@ -9,7 +9,9 @@ import { Funcionario } from '../models/funcionario';
 })
 export class FuncionarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    ) { }
 
   public findAll(): Observable<Funcionario[]> {
     return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`).pipe(

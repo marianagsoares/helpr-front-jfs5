@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FuturoCliente } from 'src/app/models/futurocliente';
+import { FuturoCliente } from 'src/app/models/futuro-cliente';
 import { FuturoclienteService } from 'src/app/services/futurocliente.service';
 
 @Component({

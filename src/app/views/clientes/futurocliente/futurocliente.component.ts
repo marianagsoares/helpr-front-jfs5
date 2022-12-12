@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FuturoCliente } from 'src/app/models/futurocliente';
+import { FuturoCliente } from 'src/app/models/futuro-cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { FuturoclienteService } from 'src/app/services/futurocliente.service';
 

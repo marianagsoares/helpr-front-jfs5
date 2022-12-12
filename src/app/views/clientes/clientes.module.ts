@@ -8,7 +8,7 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask'
 import { FuturoclienteComponent } from './futurocliente/futurocliente.component';
 import { FuturoCandidatoComponent } from './futuro-candidato/futuro-candidato.component';
 import { NewFuturoClienteComponent } from './futurocliente/new-futuro-cliente/new-futuro-cliente.component';

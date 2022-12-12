@@ -1,1 +1,47 @@
-<p>new-funcionario works!</p>
+<app-nav-bar>
+    <ng-container>
+        <h2>Cadastrar Funcionário</h2>
+        <form [formGroup]="formFuncionario">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput placeholder="Ex. Digite seu nome" formControlName="nome">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input type="text" name="cpf" matInput placeholder="Ex. 000.000.000-00" formControlName="cpf" mask="000.000.000-00">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Telefone</mat-label>
+                <input type="tel" name="telefone" matInput formControlName="telefone" mask="(00)00000-0000">
+            </mat-form-field>
+            <div class="selects">
+                <mat-form-field appearance="fill" class="select">
+                    <mat-select placeholder="Perfil do Funcionário" formControlName="perfil" name="perfil" required>
+                        <mat-option disabled>Selecione o perfil</mat-option>
+                        <mat-option *ngFor="let perfil of perfis" value={{perfil.value}}>
+                            {{perfil.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="select">
+                    <mat-select placeholder="Cargo do Funcionário" formControlName="idCargo" name="idCargo" required>
+                        <mat-option disabled>Selecione o cargo</mat-option>
+                        <mat-option *ngFor="let cargo of cargos" value={{cargo.idCargo}}>
+                            {{cargo.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" name="email" matInput placeholder="Ex. Digite seu email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput formControlName="senha">
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" (click)="create()">Cadastrar</button>
+            <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
+        </form>
+    </ng-container>
+</app-nav-bar>
