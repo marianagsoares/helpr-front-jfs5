@@ -7,7 +7,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FotoFuncionarioPipe } from 'src/app/pipe/foto-funcionario.pipe';
 import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
-
+import { NgxMaskModule } from 'ngx-mask'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.compo
     CommonModule,
     FuncionariosRoutingModule,
     MaterialModule,
-    ComponentsModule
+    ComponentsModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ]
 })
 export class FuncionariosModule { }

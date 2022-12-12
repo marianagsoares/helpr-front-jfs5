@@ -1,0 +1,22 @@
+form a,
+form button {
+    margin-left: 20px;
+    float: right;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.margin {
+    margin-right: 15px;
+}
+
+.selects{
+    display: flex;
+    justify-content: space-between;
+}
+
+.select{
+    width: 48%;
+}
