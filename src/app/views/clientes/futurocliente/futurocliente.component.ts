@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuturoCliente } from 'src/app/models/futuro-cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { FuturoclienteService } from 'src/app/services/futurocliente.service';
@@ -14,7 +15,8 @@ export class FuturoclienteComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'excluir'];
 
   constructor( 
-    private futuroclienteService : FuturoclienteService
+    private futuroclienteService : FuturoclienteService,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class FuturoclienteComponent implements OnInit {
     let ok = confirm("Tem certeza que deseja excluir?");
     if(ok) {
       this.futuroclienteService.delete(idFuturoCliente).subscribe(() => {
-        alert("Cliente excluido.");
+        this.matSnackBar.open("Futuro cliente excluído", "fechar")
         this.initializeTable();
       });
     }

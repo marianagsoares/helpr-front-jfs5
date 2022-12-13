@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NewFuturoClienteComponent } from '../../clientes/futurocliente/new-futuro-cliente/new-futuro-cliente.component';
 import { NgwWowService } from 'ngx-wow';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     public dialog: MatDialog,
-    private wowService: NgwWowService
+    private wowService: NgwWowService,
+    private matSnackBar: MatSnackBar
   ) {
 
     this.wowService.init();
@@ -40,12 +42,12 @@ export class LoginComponent implements OnInit {
     if(this.formLogin.valid) {
       const credenciais: Credenciais = this.formLogin.value;
       this.authService.authenticate(credenciais).subscribe(response => {
-        alert("Bem-vindo(a)!");
+        this.matSnackBar.open("Bem vindo ao Helpr!", "fechar")
         this.router.navigate(["/home"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 

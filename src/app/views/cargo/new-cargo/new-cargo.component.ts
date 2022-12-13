@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
 import { Cargo } from 'src/app/models/cargo';
 import { CargoService } from 'src/app/services/cargo.service';
@@ -16,7 +17,8 @@ export class NewCargoComponent implements OnInit {
   constructor(
     formBuilder: FormBuilder,
     private cargoService: CargoService,
-    private router: Router   
+    private router: Router,
+    private matSnackBar: MatSnackBar   
   ){
     this.formCargo = formBuilder.group({
       nome:["",[ Validators.required]],
@@ -33,12 +35,12 @@ export class NewCargoComponent implements OnInit {
     if(this.formCargo.valid){
       const cargo: Cargo = this.formCargo.value;
       this.cargoService.create(cargo).subscribe(response =>{
-        alert("Cargo cadastrado com sucesso!");
+        this.matSnackBar.open("Cargo cadastrado com sucesso", "fechar")
         this.router.navigate(["/cargos"]);
       })
     }
     else{
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 }

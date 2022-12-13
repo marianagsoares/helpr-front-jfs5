@@ -6,6 +6,7 @@ import { Chamado } from './../../../models/chamado';
 import { Cliente } from './../../../models/cliente';
 import { Component, OnInit } from '@angular/core';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-chamado',
@@ -49,7 +50,8 @@ export class EditChamadoComponent implements OnInit {
     private chamadoService: ChamadoService,
     private clienteService: ClienteService,
     private funcionarioService: FuncionarioService,
-    private router : Router
+    private router : Router,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -89,12 +91,12 @@ export class EditChamadoComponent implements OnInit {
     if (form.valid) {
       console.log(this.chamado)
       this.chamadoService.update(this.chamado).subscribe(chamado => {
-        alert("Chamado editado.");
+        this.matSnackBar.open("Chamado editado", "fechar")
         this.router.navigate(["/chamados"])
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 }

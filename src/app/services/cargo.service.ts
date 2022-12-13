@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
 import { Cargo } from '../models/cargo';
@@ -9,13 +10,14 @@ import { Cargo } from '../models/cargo';
 })
 export class CargoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private matSnackBar: MatSnackBar) { }
 
   //metodo para buscar cargo
   public findAll(): Observable<Cargo[]>{
   return this.http.get<Cargo[]>(`${API_CONFIG.baseUrl}/cargos`).pipe(
     catchError(error => {
-      alert("Erro ao buscar cargos");
+      this.matSnackBar.open("Erro ao buscar cargos", "fechar")
       console.error(error);
       return EMPTY;
     })
@@ -25,7 +27,7 @@ export class CargoService {
   public create(cargo: Cargo): Observable<Cargo>{
    return this.http.post<Cargo>(`${API_CONFIG.baseUrl}/cargos`, cargo).pipe(  
     catchError(error =>{
-      alert("Erro ao criar um novo cargo.");
+      this.matSnackBar.open("Erro ao criar novo cargo", "fechar")
       console.error(error);
       return EMPTY;
     })
@@ -36,7 +38,7 @@ export class CargoService {
   public findById(idCargo: string): Observable<Cargo>{
     return this.http.get<Cargo>(`${API_CONFIG.baseUrl}/cargos/${idCargo}`).pipe(
       catchError(error =>{
-        alert("Erro ao buscar dados do cargo");
+        this.matSnackBar.open("Erro ao buscar dados do cargo", "fechar")
         console.error(error);
         return EMPTY;
       })
@@ -47,8 +49,7 @@ export class CargoService {
   public delete(idCargo: number): Observable<Cargo> {
     return this.http.delete<Cargo>(`${API_CONFIG.baseUrl}/cargos/${idCargo}`).pipe(
       catchError(error => {
-        alert("Erro ao excluir cargo. Existe relação de dependência.");
-        
+        this.matSnackBar.open("Erro ao deletar Cargo", "fechar");
         console.error(error);
         return EMPTY;
       })
@@ -58,7 +59,7 @@ export class CargoService {
   public update(cargo: Cargo): Observable<Cargo> {
       return this.http.put<Cargo>(`${API_CONFIG.baseUrl}/cargos/${cargo.idCargo}`, cargo).pipe(
         catchError(error => {
-          alert("Erro ao editar cargo.");
+          this.matSnackBar.open("Erro ao editar cargo", "fechar");
           console.error(error);
           return EMPTY;
         })

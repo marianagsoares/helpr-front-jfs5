@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cargo } from 'src/app/models/cargo';
 import { CargoService } from 'src/app/services/cargo.service';
@@ -23,7 +24,8 @@ export class EditCargoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cargoService:CargoService,
-    private router: Router
+    private router: Router,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,12 +43,12 @@ export class EditCargoComponent implements OnInit {
   public update(formEdit: NgForm): void {
     if(formEdit.valid) {
       this.cargoService.update(this.cargo).subscribe(() => {
-        alert("Cargo editado.");
+        this.matSnackBar.open("Cargo editado", "fechar")
         this.router.navigate(["/cargos"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 

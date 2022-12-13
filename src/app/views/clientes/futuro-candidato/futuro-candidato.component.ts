@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuturoCandidato } from 'src/app/models/futuro-candidato';
 import { FuturoCandidatoService } from 'src/app/services/futuro-candidato.service';
 
@@ -13,7 +14,8 @@ export class FuturoCandidatoComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nomeCompleto', 'email', 'descricaoDasHabilidades','setor', 'excluir'];
   dataSource: FuturoCandidato[] = [];
 
-  constructor(private futurocandidatoservice: FuturoCandidatoService) { }
+  constructor(private futurocandidatoservice: FuturoCandidatoService,
+    private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.initializeTable();
@@ -29,7 +31,7 @@ export class FuturoCandidatoComponent implements OnInit {
     let ok = confirm("Tem certeza que deseja excluir?");
     if(ok) {
       this.futurocandidatoservice.delete(id).subscribe(() => {
-        alert("Futuro Candidato excluido.");
+        this.matSnackBar.open("Futuro candidato excluído", "fechar")
         this.initializeTable();
       });
     }

@@ -25,16 +25,4 @@ export class FuncionariosComponent implements OnInit {
       this.dataSource = funcionarios;
     });
   }
-
-  public delete(idFuncionario: number): void {
-    console.log(idFuncionario)
-    let ok = confirm("Tem certeza que deseja excluir?");
-    if(ok) {
-      this.funcionarioService.delete(idFuncionario).subscribe(() => {
-        alert("Funcionário Excluído com sucesso.");
-        this.initializeTable();
-      });
-    }
-  }
-
 }
