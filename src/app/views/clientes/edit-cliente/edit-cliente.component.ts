@@ -3,6 +3,7 @@ import { Cliente } from './../../../models/cliente';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-cliente',
@@ -22,7 +23,8 @@ export class EditClienteComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private clienteService: ClienteService,
-    private router: Router
+    private router: Router,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,12 +43,12 @@ export class EditClienteComponent implements OnInit {
   public update(formEdit: NgForm): void {
     if(formEdit.valid) {
       this.clienteService.update(this.cliente).subscribe(() => {
-        alert("Cliente editado.");
+        this.matSnackBar.open("Cliente editado", "fechar")
         this.router.navigate(["/clientes"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 }

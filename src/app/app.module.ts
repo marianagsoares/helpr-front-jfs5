@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxMaskModule} from 'ngx-mask';
+import { MaterialModule } from './shared/material/material.module';
 
 
 
@@ -22,7 +23,8 @@ import { NgxMaskModule} from 'ngx-mask';
     BrowserAnimationsModule,
     HttpClientModule,
     JwtModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MaterialModule
   ],
   providers: [
     {

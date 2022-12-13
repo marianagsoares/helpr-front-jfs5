@@ -5,6 +5,7 @@ import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from 'src/app/models/cliente';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-chamado',
@@ -21,7 +22,8 @@ export class NewChamadoComponent implements OnInit {
     formBuilder: FormBuilder,
     private clienteService: ClienteService,
     private chamadoService: ChamadoService,
-    private router: Router
+    private router: Router,
+    private matSnackBar: MatSnackBar
   ) {
     this.formChamado = formBuilder.group({
       titulo: ["", [Validators.required]],
@@ -44,12 +46,12 @@ export class NewChamadoComponent implements OnInit {
     if(this.formChamado.valid) {
       const chamado: Chamado = this.formChamado.value;
       this.chamadoService.create(chamado).subscribe(() => {
-        alert("Chamado cadastrado.");
+        this.matSnackBar.open("Chamado cadastrado", "fechar")
         this.router.navigate(["/chamados"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 }

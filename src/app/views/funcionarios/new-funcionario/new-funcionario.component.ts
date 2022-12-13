@@ -5,6 +5,7 @@ import { Funcionario } from 'src/app/models/funcionario';
 import { CargoService } from 'src/app/services/cargo.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { Cargo } from 'src/app/models/cargo'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-funcionario',
@@ -30,7 +31,8 @@ export class NewFuncionarioComponent implements OnInit {
     formBuilder: FormBuilder,
     private funcionarioService: FuncionarioService,
     private router: Router,
-    private cargoService : CargoService
+    private cargoService : CargoService,
+    private matSnackBar: MatSnackBar
   ) {
     this.formFuncionario = formBuilder.group({
       nome: ["", [Validators.required]],
@@ -53,12 +55,12 @@ export class NewFuncionarioComponent implements OnInit {
     if(this.formFuncionario.valid) {
       const funcionario: Funcionario = this.formFuncionario.value;
       this.funcionarioService.create(funcionario).subscribe(response => {
-        alert("Funcionário cadastrado com sucesso!");
+        this.matSnackBar.open("Funcionário cadastrado com sucesso", "fechar")
         this.router.navigate(["/funcionarios"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 }

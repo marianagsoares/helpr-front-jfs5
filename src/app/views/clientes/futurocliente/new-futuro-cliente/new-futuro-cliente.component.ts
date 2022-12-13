@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FuturoCliente } from 'src/app/models/futuro-cliente';
 import { FuturoclienteService } from 'src/app/services/futurocliente.service';
@@ -17,7 +18,8 @@ export class NewFuturoClienteComponent {
   constructor(
     private formBuilder : FormBuilder,
     private futuroClienteService: FuturoclienteService,
-    private router: Router
+    private router: Router,
+    private matSnackBar: MatSnackBar
   ) { 
 
     this.dadosPessoaisForm = this.formBuilder.group({
@@ -43,11 +45,11 @@ export class NewFuturoClienteComponent {
       console.log(formularioCompleto)
 
       this.futuroClienteService.create(formularioCompleto).subscribe(() => {
-        alert("Cliente cadastrado com sucesso!");
+        this.matSnackBar.open("Cliente cadastrado com sucesso", "fechar")
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.matSnackBar.open("Dados inválidos", "fechar")
     }
   }
 }
